@@ -1,5 +1,4 @@
 /*eslint-env browser*/
-
 function display_menu() {
     "use strict";
     window.console.log("Welcome to the Inventory Management System");
@@ -12,62 +11,83 @@ function display_menu() {
 }
 
 function update(productList) {
-	"use strict";
-	var skuInput;
-	skuInput = window.prompt('Enter a sku number');
-	for(var i = 0; i < productList.length; i++) {
-		if(skuInput === productList[i].sku) {
-				console.log("That is correct!");
-			} else {
-				console.log("You entered the wrong sku number.");
-				update();
-			}
-	}
-
+    "use strict";
+    var skuInput, skuProduct, quantity;
+    skuInput = parseInt(window.prompt("Enter sku number for product"), 10);
+    for (var i = 0; i < productList.length; i += 1) {
+        if (skuInput === productList[i][0]) {
+            skuProduct = productList[i][0];
+        }
+    }
+    if (skuInput !== skuProduct || isNaN(skuInput)) {
+        window.alert("You entered an incorrect sku number.");
+    } else {
+        quantity = parseInt(window.prompt("Enter new product stock quantity."), 10);
+        if (quantity < 0 || isNaN(quantity)) {
+            window.alert("Enter a valid quantity");
+        } else {
+            productList.forEach(function(item) {
+                if (skuInput === item[0]) {
+                    item.splice(2, 1, quantity);
+                }
+            });
+        }
+    }
+    if (productList) {
+        localStorage.productList = JSON.stringify(productList);
+    } else {
+        productList = JSON.parse(localStorage.productList);
+    }
+    localStorage.productList = JSON.parse(localStorage.productList);
 }
+
 
 function view(productList) {
     "use strict";
-		//SORTS PRODUCTLIST BY SKU
-		productList.sort(function (a, b) {
-			return a.sku - b.sku;
-		});
-		//DISPLAY PRODCUTS TO CONSOLE	
-		for(var i = 0; i < productList.length; i++) {
-					console.log(productList[i].sku + " " + productList[i].product + " " + '(' + productList[i].quantity + ')' + " " + '$' + productList[i].price);
-					}
-		window.console.log("");
+    //SORTS PRODUCTLIST BY SKU
+    productList.sort();
+    //DISPLAY PRODCUTS TO CONSOLE
+    productList.forEach(function(item) {
+        window.console.log(item[0] + " " + item[1] + " " + "(" + item[2] + ")" + " " + item[3]);
+    });
+    if(productList) {
+        localStorage.productList = JSON.stringify(productList);
+    } else {
+        productList = JSON.parse(localStorage.inventory);
+    }
+    window.console.log("");
 }
 
 function main() {
-		var productList;
+    var productList;
 
-		display_menu();
+    display_menu();
 
-		productList = [
-									{sku: 3214, product: 'muffler', quantity: 15, price: 69.99},
-									{sku: 4712, product: 'wheel', quantity: 8, price: 179.99},
-									{sku: 1369, product: 'shifter', quantity: 10, price: 54.49},
-									{sku: 6371, product: 'tire', quantity: 22, price: 119.48},
-									{sku: 5934, product: 'axel', quantity: 18, price: 79.98},
-									];
-		while (true) {
-				var command = window.prompt("Enter command");
-				if (command !== null) {
-						if (command === "view") {
-								view(productList);
-						} else if (command === "update") {
-								update(productList);
-						} else if (command === "exit") {
-								break;
-						} else {
-								window.alert("That is not a valid command.");
-						}
-				} else {
-						break;
-				}
-		}
-		window.console.log("Program terminated.");
-}	
+    productList = [
+        [3214, 'muffler', 15, '$69.99'],
+        [4712, 'shifter', 8, '$169.99'],
+        [1369, 'wheel', 10, '$54.99'],
+        [6371, 'tire', 22, '$119.98'],
+        [5934, 'axel', 18, '$79.98']
+    ];
+
+    while(true) {
+        var command = window.prompt("Enter command");
+        if (command !== null) {
+            if (command === "view") {
+                view(productList);
+            } else if (command === "update") {
+                update(productList);
+            } else if (command === "exit") {
+                break;
+            } else {
+                window.alert("That is not a valid command.");
+            }
+        } else {
+            break;
+        }
+    }
+    window.console.log("Program terminated.");
+}
 
 main();

@@ -38,15 +38,16 @@
 //var x;
 //for(x in movies) {
 //    'use strict';
-//    window.console.log(movies.[x]);
+//    window.console.log(movies[x]);
 //}
 //STEP 7
-var movies = ['Top Gun', 'Karate Kid', 'Rocky', 'Godfather', 'Lion King', 'American Me', 'Casino'];
-var x;
-for(x in movies) {
-    'use strict';
-    window.console.log(movies.sort());
-}
+//var movies = ['Top Gun', 'Karate Kid', 'Rocky', 'Godfather', 'Lion King', 'American Me', 'Casino'];
+//var x;
+//for(x in movies) {
+//    'use strict';
+//    movies.sort();
+//    window.console.log(movies[x]);
+//}
 //STEP 8
 //var movies = ['Top Gun', 'Karate Kid', 'Rocky', 'Godfather', 'Lion King', 'American Me', 'Casino'];
 //var leastFavMovies = ['Sex and the City', '50 Shades of Grey', 'Knocked Up'];
@@ -127,40 +128,41 @@ for(x in movies) {
 // 	console.log(employees[i].name);
 // }
 //STEP 15
-var employee1 = [];
-employee1["id"] = 934;
-employee1["name"] = "Lucy";
-employee1["title"] = "CEO";
-employee1["department"] = "Marketing";
-employee1["employed"] = true;
-
-var employee2 = [];
-employee2["id"] = 876;
-employee2["name"] = "Mike";
-employee2["title"] = "Janitor";
-employee2["department"] = "Operations";
-employee2["employed"] = true;
-
-var employee3 = [];
-employee3["id"] = 876;
-employee3["name"] = "Sarah";
-employee3["title"] = "Accountant";
-employee3["department"] = "Finance";
-employee3["employed"] = false;
-
-var employees = [employee1, employee2, employee3];
-
-for(var i = 0; i < employees.length; i++) {
-	if(employees[i].employed === true)
-	console.log(employees[i].name);
-}
+//var employee1 = [];
+//employee1["id"] = 934;
+//employee1["name"] = "Lucy";
+//employee1["title"] = "CEO";
+//employee1["department"] = "Marketing";
+//employee1["employed"] = true;
+//
+//var employee2 = [];
+//employee2["id"] = 876;
+//employee2["name"] = "Mike";
+//employee2["title"] = "Janitor";
+//employee2["department"] = "Operations";
+//employee2["employed"] = true;
+//
+//var employee3 = [];
+//employee3["id"] = 876;
+//employee3["name"] = "Sarah";
+//employee3["title"] = "Accountant";
+//employee3["department"] = "Finance";
+//employee3["employed"] = false;
+//
+//var employees = [employee1, employee2, employee3];
+//
+//for(var i = 0; i < employees.length; i++) {
+//	if(employees[i].employed === true)
+//	console.log(employees[i].name);
+//}
 //STEP 16
-var favMovies = [["Godfather", 5],["Friday Night Lights", 4],["American Me", 1],["Coco", 3], ['Casino', 5]];
-var titles = favMovies.filter(function(title) {
-	return (typeof title === 'string');
-});
-window.console.log(titles);
-
+//var favMovies = [["Godfather", 5],["Friday Night Lights", 4],["American Me", 1],["Coco", 3], ['Casino', 5]];
+//var titles = favMovies.filter(function(item) {
+//    return typeof item[0] === "string";
+//});
+//titles.forEach(function (item) {
+//window.console.log(item[0]);
+//});
 //STEP 17
 // var employees = ['Zak', 'Jessica', 'Mark', 'Fred', 'Sally'];
 // var showEmployee = function(x) {
@@ -172,17 +174,18 @@ window.console.log(titles);
 // }
 // showEmployee(employees);
 //STEP 18
-function filterValues(arr) {
-	'use strict';
-	var newArr = [];
-	var num = [58, '', 'abcd', true, null, false, 0];
-	for(var i = 0; i < arr.length; i++) {
-		if(arr[i] === false || arr[i] === null || arr[i] === 0 || arr[i] === '') {
-			newArr.pop(arr[i]);
-		} 
-		console.log(newArr(arr[i]));
-	}
-}
+//function filterValues(arr) {
+//  arr = arr.filter(itemFilters);
+//  return arr;
+//}
+//
+//function itemFilters(value) {
+//  if(value !== false || value !== null || value !== 0 || value !== "") {
+//    return value;
+//  }
+//}
+//
+//console.log(filterValues([58, '', 'abcd', true, null, false, 0]));
 //STEP 19
 // function random(arr) {
 // 	var randomNum = Math.floor(Math.random()*arr.length);
